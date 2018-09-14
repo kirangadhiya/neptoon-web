@@ -1,0 +1,61 @@
+@import '../../../../styles/utils';
+.main-landing-row {
+    height: 100%;
+    .logo-main {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        padding-left: 35px;
+        img {
+            width: 170px;
+        }
+    }
+    .landing-login {
+        form {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            height: 100%;
+            .form-content {
+                display: flex;
+                align-items: center;
+                height: 100%;
+                width: 100%;
+                justify-content: flex-end;
+                padding-right: 70px;
+                .form-group {
+                    margin: 0;
+                    padding-top: 2px;
+                    height: 100%;
+                    width: 40%;
+                    label {
+                        color: $darkblue;
+                        font-weight: 700;
+                    }
+                    input {
+                        height: 45px;
+                        color: $lightgray;
+                        border-color: $lightgray;
+                        font-size: 14px;
+                    }
+                }
+                .password-input {
+                    padding-left: 30px;
+                }
+            }
+            .forgot-text {
+                margin: 0;
+                font-size: 13px;
+                color: $lightgray;
+                cursor: pointer;
+            }
+            .login-btn {
+                width: 15%;
+                line-height: 32px;
+                border-radius: 30px;
+                font-weight: 700;
+                background-color: $darkblue;
+            }
+        }
+    }
+}

@@ -1,0 +1,59 @@
+@import '../../../../styles/utils';
+.dashboard-page {
+    padding-top: 60px;
+    .main-row {
+        .left-part {
+            // box-shadow: 0 1px 6px rgba(10, 10, 10, 0.64);
+            .user-profile {
+                position: relative;
+                img {
+                    width: 100%;
+                    object-fit: cover;
+                    height: 180px;
+                }
+                .profile-img {
+                    position: absolute;
+                    width: 130px;
+                    height: 130px;
+                    left: 50%;
+                    object-fit: cover;
+                    transform: translate(-50%, 80%);
+                }
+            }
+            .user-text {
+                text-align: center;
+                padding-top: 60px;
+                .fullname {
+                    font-weight: 700;
+                    color: $lightblack;
+                    font-size: 20px;
+                    margin: 0;
+                }
+                .position {
+                    margin: 0;
+                    font-size: 14px;
+                    color: $lightblack;
+                }
+            }
+            .about {
+                padding: 30px 10px 0 10px;
+                .field-name {
+                    font-weight: 700;
+                    color: $lightgray;
+                    font-size: 16px;
+                    margin-bottom: 5px;
+                }
+                .desc {
+                    font-size: 14px;
+                    color: $lightblack
+                }
+            }
+        }
+        .center-part {
+            // box-shadow: 0 1px 6px rgba(10, 10, 10, 0.64);
+        }
+        .right-part {
+            // box-shadow: 0 1px 6px rgba(10, 10, 10, 0.64);
+        }
+    }
+}

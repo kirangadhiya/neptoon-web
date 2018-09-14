@@ -1,0 +1,254 @@
+<div class="login-page" *ngIf="signup">
+    <div class="row justify-content-md-center">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <p class="page-title">Create Your account now</p>
+            <div class="form signup-box">
+                <form role="form" #signUpForm="ngForm" (ngSubmit)="signUpForm.form.valid && register()">
+                    <div class="form-content">
+                        <div class="row">
+                            <div class="col col-lg-6 col-md-6 col-12">
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    <input type="text" name="firstname" class="form-control input-underline input-lg" [(ngModel)]="registrationModel.firstname"
+                                        #firstname="ngModel" required>
+                                    <div *ngIf="firstname.invalid && (firstname.touched || signUpForm.submitted)">
+                                        <p class="input-info error-message" *ngIf="firstname.errors.required">Firstname is
+                                            required
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col col-lg-6 col-md-6 col-12">
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <input type="text" name="lastname" class="form-control input-underline input-lg" [(ngModel)]="registrationModel.lastname"
+                                        #lastname="ngModel" required>
+                                    <div *ngIf="lastname.invalid && (lastname.touched || signUpForm.submitted)">
+                                        <p class="input-info error-message" *ngIf="lastname.errors.required">Lastname is
+                                            required
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" name="username" class="form-control input-underline input-lg" [(ngModel)]="registrationModel.username"
+                                #username="ngModel" required>
+                            <div *ngIf="username.invalid && (username.touched || signUpForm.submitted)">
+                                <p class="input-info error-message" *ngIf="username.errors.required">Username is required
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Email/Phone No</label>
+                            <input type="text" name="user_email" class="form-control input-underline input-lg" [(ngModel)]="registrationModel.user_email"
+                                #user_email="ngModel" required>
+                            <div *ngIf="user_email.invalid && (user_email.touched || signUpForm.submitted)">
+                                <p class="input-info error-message" *ngIf="user_email.errors.required">Email/Phone No is
+                                    required
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" title="Use 8 or more characters with a mix of letters, numbers & symbols" name="password" class="form-control input-underline input-lg"
+                                [pattern]="passwordPattern" [(ngModel)]="registrationModel.password" #password="ngModel" required>
+                            <div *ngIf="password.invalid && (password.touched || signUpForm.submitted)">
+                                <p class="input-info error-message" *ngIf="password.errors.required">Password is required
+                                </p>
+                                <p class="input-info error-message" *ngIf="password.errors.pattern">Password must contain
+                                    8 or more characters with a mix of letters, numbers & symbols.</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Confirm Password</label>
+                            <input type="password" name="confirm_password" class="form-control input-underline input-lg" [(ngModel)]="registrationModel.confirm_password"
+                                #confirm_password="ngModel" required>
+                            <div *ngIf="confirm_password.invalid && (confirm_password.touched || signUpForm.submitted)">
+                                <p class="input-info error-message" *ngIf="registrationModel.password > 0 && (registrationModel.password !== registrationModel.confirm_password)">
+                                    Password and confirm password not matches.
+                                </p>
+                                <p class="input-info success-message" *ngIf="registrationModel.password && (registrationModel.password == registrationModel.confirm_password)">
+                                    Password and confirm password matches.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-secondary rounded-btn signup-btn" (click)="openModal()">CREATE ACCOUNT</button>
+                    <!-- <button class="btn btn-secondary rounded-btn" [routerLink]="['/login']"> Login </button> -->
+                </form>
+                <p class="by-click">By clicking <span>Create Account</span> you agree <span>NepToon</span> terms of service,
+                    privacy policy and cookies policy</p>
+                <p class="or-signup">or Sign up with</p>
+                <button class="btn btn-secondary rounded-btn facebook-btn" type="button">FACEBOOK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="login-page" *ngIf="setprofile">
+    <div class="row justify-content-md-center">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <p class="page-title">Welcome To NepToon</p>
+            <div class="form setProfile-box">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-12 center user-image">
+                        <img src="../../assets/images/dashboard/user-img.png">
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-12 set-profile">
+                        <label for="about">About</label>
+                        <textarea id="about" style="width:100%;"></textarea>
+
+
+                        <label>Select Your Interests</label>
+                        <label class="container input-title font-size ">Sports
+                            <input type="checkbox" checked="checked">
+                            <span class="checkmark"></span>
+                        </label>
+                        <div class="row verify content-center">
+                            <button class="verify-button" (click)="finish()">FINISH</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-12">
+
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-12">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #emailverify let-c="close" let-d="dismiss">
+    <div class="success-model">
+        <div class="modal-header">
+            <h4 *ngIf="emailVerify" class="modal-title center" id="modal-basic-title">Email Verification</h4>
+            <h4 *ngIf="phoneVerify" class="modal-title center" id="modal-basic-title">Phone Verification</h4>
+            <h4 *ngIf="emailCode" class="modal-title center" id="modal-basic-title"></h4>
+            <h4 *ngIf="phoneCode" class="modal-title center" id="modal-basic-title"></h4>
+            <h4 *ngIf="phoneVerificationCode" class="modal-title center" id="modal-basic-title">Phone Code Verification</h4>
+            <button type="button" class="close-button" aria-label="Close">
+                <img src="../../assets/images/dashboard/close.png">
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <div *ngIf="emailVerify" class="row row-content emailVerification">
+                <div class="col-lg-12 col-md-12 col-12">
+                    <div class="row email-verify content-center">
+                        An email verification code will be sent to
+                    </div>
+                    <div class="row email font-700 content-center">
+                        milanbhikadiya22@gmail.com
+                    </div>
+                    <div class="row change-email font-700 content-center">
+                        <a href="#" class="text-color">Wnat to change email ?</a>
+                    </div>
+                    <div class="row send content-center">
+                        <button class="send-button" (click)="next()">SEND CODE</button>
+                    </div>
+                    <div class="row phone font-700 content-center">
+                        <a href="#" class="text-color">Use a phone no insted</a>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="emailCode" class="row row-content codeSent">
+                <div class="col-lg-12 col-md-12 col-12">
+                    <div class="row email-verify content-center">
+                        <div style="margin:10px;">
+                            <img style="width:50px;height:50px;" src="../../assets/images/login/success.png">
+                        </div>
+                        <div style="margin:10px;align-items: center;display: flex;">
+                            Email Verification code sent
+                        </div>
+                    </div>
+                    <div class="row enterCode content-center">
+                        Please enter verification code sent to you
+                    </div>
+                    <div class="row verification font-700">
+                        <h6 class="verification-label">Verification Code</h6>
+                        <input class="verification-code" type="text" name="verification-code" />
+                    </div>
+                    <div class="row verify content-center">
+                        <button class="verify-button" (click)="next1()">VERIFY EMAIL</button>
+                    </div>
+                    <div class="row resend-code content-center">
+                        Didn't recieve the code ? <a class="font-700 resend-link text-color" href="#">Resend Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="phoneCode" class="row row-content codeSent">
+                <div class="col-lg-12 col-md-12 col-12">
+                    <div class="row email-verify content-center">
+                        <div style="margin:10px;">
+                            <img style="width:50px;height:50px;" src="../../assets/images/login/success.png">
+                        </div>
+                        <div style="margin:10px;align-items: center;display: flex;">
+                            Phone Verification code sent
+                        </div>
+                    </div>
+                    <div class="row enterCode content-center">
+                        Please enter verification code sent to you
+                    </div>
+                    <div class="row verification font-700">
+                        <h6 class="verification-label">Verification Code</h6>
+                        <input class="verification-code" type="text" name="verification-code" />
+                    </div>
+                    <div class="row verify content-center">
+                        <button class="verify-button" (click)="next2()">VERIFY PHONE</button>
+                    </div>
+                    <div class="row resend-code content-center">
+                        Didn't recieve the code ? <a class="font-700 resend-link" href="#">Resend Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="phoneVerify" class="row row-content phoneVerification">
+                <div class="col-lg-12 col-md-12 col-12">
+                    <div class="row email-verify content-center">
+                        An Phone verification code will be sent to
+                    </div>
+                    <div class="row email font-700 content-center">
+                        +917359634846
+                    </div>
+                    <div class="row change-email font-700 content-center">
+                        <a href="#" class="text-color">Wnat to change phone no ?</a>
+                    </div>
+                    <div class="row send content-center">
+                        <button class="send-button" (click)="next3()">SEND CODE</button>
+                    </div>
+                    <div class="row phone font-700 content-center">
+                        <a href="#" class="text-color">Use a email no insted</a>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="phoneVerificationCode" class="row row-content phoneVerificationCode" (click)="Setprofile()">
+                <div class="col-lg-12 col-md-12 col-12">
+                    <div class="row code-verify font-700 content-center">
+                        Please wait while reset code is being verified
+                    </div>
+                    <div class="row content-center">
+                        <img class="loader-image" src="../../assets/images/dashboard/loading.png" />
+                    </div>
+                    <!-- <div class="row change-email font-700 content-center">
+                        <a href="#">Wnat to change phone no ?</a>
+                    </div>
+                    <div class="row send content-center">
+                        <button class="send-button">SEND CODE</button>
+                    </div>
+                    <div class="row phone font-700 content-center">
+                        <a href="#">Use a email no insted</a>
+                    </div>  -->
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
